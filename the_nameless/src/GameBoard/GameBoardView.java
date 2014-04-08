@@ -1,20 +1,14 @@
 package GameBoard;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
+
 import Main.MainController;
 
 public class GameBoardView extends JFrame {
-	private JPanel GameBoardPanel, GameBoardPanelSouth, GameBoardPanelCenter = new GameBoardDrawView();
+	private JPanel GameBoardPanel, GameBoardPanelCenter = new GameBoardDrawView();
 	private JButton button1;
 	
 	public GameBoardView() {
@@ -22,22 +16,15 @@ public class GameBoardView extends JFrame {
 		
 		Font font = new Font("SansSerif", Font.BOLD, 24);
 		
-		// title panel
+		// GameBoard panel
 		GameBoardPanel = new JPanel();
 		GameBoardPanel.setLayout(new BorderLayout());
 		
-		GameBoardPanelSouth = new JPanel();
-		GameBoardPanel.add(GameBoardPanelSouth, BorderLayout.SOUTH);
-		GameBoardPanel.add(GameBoardPanelCenter, BorderLayout.CENTER);
-		
-		/* SOUTH:
-		 * Menu Buttons
-		 */
-		GameBoardPanelSouth.setLayout(new GridLayout(1, 1));
-		GameBoardPanelSouth.setBackground(Color.WHITE);
-		/* Add buttons*/
 		button1 = new JButton("Main Menu");
-		GameBoardPanelSouth.add(button1);
+		button1.setFont(font);
+		
+		GameBoardPanel.add(button1, BorderLayout.SOUTH);
+		GameBoardPanel.add(GameBoardPanelCenter, BorderLayout.CENTER);
 		
 	}
 

@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-import GameBoard.GameBoardModel;
 import Settings.SettingsModel;
 
 public class TitleMenuGBView extends JPanel 

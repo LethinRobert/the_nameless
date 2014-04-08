@@ -22,7 +22,7 @@ public class MainController implements ActionListener {
 			model.setDoorNumber(2);
 		else if (button == "Credits")
 			model.setDoorNumber(3);
-		else if (button == "Main Menu" || button == "Menu" || button == "Title Menu")
+		else if (button == "Main Menu")
 			model.setDoorNumber(4);
 		else if (button == "Exit")
 			model.setDoorNumber(5);
