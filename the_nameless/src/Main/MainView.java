@@ -46,7 +46,7 @@ public class MainView extends JFrame {
 		remove(thePanel);
 		
 		if (doorNumber == 1)
-			thePanel = new GameBoardView();
+			thePanel = diffPanel.getDiffPanel();
 		else if (doorNumber == 2)
 			thePanel = instructionsPanel.getInstructionsPanel();
 		else if (doorNumber == 3)
@@ -55,6 +55,8 @@ public class MainView extends JFrame {
 			thePanel = tMenuPanel.getTMenuPanel();
 		else if (doorNumber == 5)
 			thePanel = creditsPanel.getCreditsPanel();
+		else if (doorNumber == 6)
+			thePanel = boardPanel.getGameBoardPanel();
 		add(thePanel, BorderLayout.CENTER);
 
 		validate();
