@@ -25,8 +25,8 @@ public class TitleMenuView extends JFrame {
 		tMenuPanel.setLayout(new BorderLayout());
 		
 		tMenuPanelEast = new JPanel();
-		tMenuPanel.add(tMenuPanelEast, BorderLayout.EAST);
 		tMenuPanel.add(tMenuPanelCenter, BorderLayout.CENTER);
+		tMenuPanel.add(tMenuPanelEast, BorderLayout.EAST);
 		
 		/* EAST:
 		 * Menu Buttons
