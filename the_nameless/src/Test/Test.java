@@ -21,13 +21,24 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		
-		// to do list
-		// 1. Instructions View, Credits View, EXIT, Difficulty View
-		// 2. Controllers ALL
-		// 3. Multiplayer
-		// 4. AI
-		// 5. Victory/defeat screens
-		// 6. NICE TO HAVE STUFF
+		/*Completed
+		* 1. Skeleton for the game
+		* 2. Main MVC, Credits View, Skeleton InstructionsView
+		* 3. Skeleton EXIT, skeleton Difficulty MVC
+		* 4. TitleMenu + graphics (Still needs slight visual improvements
+		* 5. SettingsModel with rescalable skeleton built
+		* 6. Setting for board size skeleton
+		* 7. GameBoard M/V skeletons
+		*/
+		/* to do list
+		* 1. Instructions View, EXIT, Difficulty View
+		* 2. Controllers ALL
+		* 3. Multiplayer
+		* 4. AI
+		* 5. Victory/defeat screens
+		* 6. Improve graphics scaling
+		* 7. NICE TO HAVE STUFF
+		*/
 		
 		System.out.println("Repository for the_nameless");		
 		

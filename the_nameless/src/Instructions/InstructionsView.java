@@ -18,13 +18,13 @@ public class InstructionsView extends JFrame {
 	private JButton button1;
 	private JLabel instructions;
 	public InstructionsView() {
-		super("Battleship Galactica");
+		super("Connect Four");
 		
 		Font font = new Font("SansSerif", Font.BOLD, 24);
 				
 		// instructions panel
 		instructionsPanel = new JPanel();
-		instructionsPanel.setLayout(new GridLayout(2, 2, 2, 2));
+		instructionsPanel.setLayout(new BorderLayout());
 		
 		button1 = new JButton("Main Menu");
 		button1.setFont(font);
@@ -34,7 +34,7 @@ public class InstructionsView extends JFrame {
 				+ " INSTRUCTIONS"
 				+ " HERE</html>");
 		
-		instructionsPanel.add(instructions, BorderLayout.NORTH);
+		instructionsPanel.add(instructions, BorderLayout.CENTER);
 		instructionsPanel.add(button1, BorderLayout.SOUTH);
 				
 		add(instructionsPanel, BorderLayout.CENTER);

@@ -3,15 +3,20 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+import GameBoard.GameBoardModel;
 import Settings.SettingsModel;
 
 public class TitleMenuGBView extends JPanel 
 {
 	//settings
 	SettingsModel userSets = new SettingsModel();
+	//Game Board
+	TitleMenuGBModel board = new TitleMenuGBModel();
 	public void paintComponent( Graphics g )
 	{
 	  int i, j, startX, startY, radius, w1, w2, h1, h2, rw1, rw2, rh1, rh2, rad1;
+	  int gridWidth = userSets.getGridWidth();
+	  int gridHeight = userSets.getGridHeight();
 	  if (userSets.getRatio() == 0) {
 		  w1 = (userSets.getWindowWidth() / 10);
 		  w2 = (userSets.getWindowWidth() / 40);
@@ -58,11 +63,22 @@ public class TitleMenuGBView extends JPanel
       
 
       //Level:2 - White cirlces to complete board
-      g.setColor( Color.BLACK );
-      for(i=0; i<6; i++){
-    	  for(j=0; j<7; j++){
-    		  
-    		  g.fillOval(startX + ((radius + 7) * j), startY + ((radius + 7) * i), radius, radius);
+      g.setColor( Color.WHITE);
+      for(i=0; i<gridWidth; i++){
+    	  for(j=0; j<gridHeight; j++){
+    		  if (board.getGrid(i, j) == 0)
+    		  {
+    			  g.setColor(Color.WHITE);
+    		  }
+    		  else if (board.getGrid(i, j) == 1)
+    		  {
+    			  g.setColor(Color.BLACK);
+    		  }
+    		  else if (board.getGrid(i, j) == 2)
+    		  {
+    			  g.setColor(Color.RED);
+    		  }
+    		  g.fillOval(startX + ((radius + 7) * i), startY + ((radius + 7) * j), radius, radius);
     	  }
       }
       
