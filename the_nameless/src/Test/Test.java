@@ -70,7 +70,7 @@ public class Test {
 		//Controllers
 		Difficulty.DifficultyModel diffModel = new Difficulty.DifficultyModel();
 		Difficulty.DifficultyController diffControl = new Difficulty.DifficultyController(mainView, diffModel);
-		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController();
+		//GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController();
 		
 		gameView.add1(mainView);
 		gameView.add2(model);
@@ -83,9 +83,7 @@ public class Test {
 		tmenu.registerController(controller);
 		gameView.registerController(controller);
 		mode.registerController(controller);
-		gameView.registerController2(boardControl);
 		mainView.registerController(controller);
-		mainView.registerController2(boardControl);
 		victory.registerController(controller);
 
 		//Window Setup

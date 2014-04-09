@@ -11,124 +11,74 @@ import java.util.Random;
 
 import Settings.SettingsModel;
 
-public class GameBoardController implements ActionListener, KeyListener, MouseListener {
+public class GameBoardController{
 
 	//settings
 	private SettingsModel userSets = new SettingsModel();
 	private Main.MainModel mainModel;
 	private Main.MainView mainView;
+	private static int h, z, v, t, u, r, d;
 
-	/*public GameBoardController() {
-	}*/
-	//KEYBOARD INPUT
-	/*public void keyPressed(KeyEvent e){
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT) {
-			if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
-				GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
-				System.out.println("CLICK!!!");
-			}
-		}
-		if (key == KeyEvent.VK_RIGHT) {
-			if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 7*(userSets.getrad1() + 7) ) ) {
-				GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
-				System.out.println("CLICK!!!");	
-			}
-		}
-	    System.out.println("KP");
+	public GameBoardController() {
+		//not needed?
 	}
-	public void keyReleased(KeyEvent e) {
-		//int key = e.getKeyCode();
-		System.out.println("KR");
-	}
-	public void keyTyped(KeyEvent e) {
-		//int key = e.getKeyCode();
-		System.out.println("KT");
-	}
-	*/
-	public void actionPerformed(ActionEvent e) {
-		String button = e.getActionCommand();
-		
-		if (button.equalsIgnoreCase("Main Menu") || button.equalsIgnoreCase("TitleMenu") || button.equals("Menu")) {
-			GameBoardModel.reset();
-			return;
-		}
-	    System.out.println("AP");
-	}
-/*	public void display(int doorNumber) {
-		remove(gameView.getGameBoardPanel());
-		add(gameView.getGameBoardPanel(), BorderLayout.CENTER);
-		validate();
-		repaint();
-	}**/
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		System.out.println("MC");
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		System.out.println("ME");
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		System.out.println("MEXIT");	
-	}
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		System.out.println("MP");
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		System.out.println("MR");
-		
-	}
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		/*if (GameBoard.GameBoardModel.getGSwitch() == 1 && GameBoard.GameBoardModel.getGameOver() == 0){
-
-			if (key == KeyEvent.VK_LEFT) {
-				if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
-					GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
-					GameBoardModel.setCol(GameBoardModel.getCol() - 1);
-					System.out.println(GameBoardModel.getCol());
-				}
-			}
-			if (key == KeyEvent.VK_RIGHT) {
-				if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 6*(userSets.getrad1() + 7) ) ) {
-					GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
-					GameBoardModel.setCol(GameBoardModel.getCol() + 1);
-					System.out.println(GameBoardModel.getCol());	
-				}
-			}
-			if (key == KeyEvent.VK_ENTER) {
-				for (int k=5;k>=0;k--)
-			    {
-			      if (GameBoardModel.getGrid(GameBoardModel.getCol(), k) == 0)
-			      {
-			    	  GameBoardModel.setGrid(GameBoardModel.getCol(), k, GameBoardModel.getPlayer());
-			        break;
-			      }
-			    }
-
-			    if (GameBoardModel.getPlayer() == 1) {
-			    	GameBoardModel.setPlayer(2);
-			    	GameBoardModel.setTurn(1);
-			   	}
-			   	else {
-			    	GameBoardModel.setPlayer(1);
-			   		GameBoardModel.setTurn(0);
-			   	}
-			}
-		}*/
-	}
-	@Override
-	public void keyReleased(KeyEvent e) {
-	}
-	@Override
-	public void keyTyped(KeyEvent e) {
+	public static int checkWinner() {
+		//check for horizontal four in a row
+    	for (h =0;h<6;h++) {
+	    	for (z=0;z<3;z++) {
+		    	if ((GameBoardModel.getGrid(z, h) != 0) && (GameBoardModel.getGrid(z+1, h) != 0)
+		    	&& (GameBoardModel.getGrid(z+2, h) != 0) && (GameBoardModel.getGrid(z+3, h) != 0)
+		    	&& ((GameBoardModel.getGrid(z, h) == GameBoardModel.getGrid(z+1, h))
+		    	&& (GameBoardModel.getGrid(z+1, h) == GameBoardModel.getGrid(z+2, h))
+		    	&& (GameBoardModel.getGrid(z+2, h) == GameBoardModel.getGrid(z+3, h)))) {
+    	          GameBoardModel.setWinner(GameBoardModel.getGrid(z, h));
+    	          GameBoardModel.setGameOver(1);
+    	          return(1);
+		    	}
+    	    }
+    	}
+	    //check for vertical four in a row
+    	for (v =0;v<6;v++) {
+	    	for (t=0;t<3;t++) {
+		    	if ((GameBoardModel.getGrid(v, t) != 0) && (GameBoardModel.getGrid(v, t+1) != 0)
+		    	&& (GameBoardModel.getGrid(v, t+2) != 0) && (GameBoardModel.getGrid(v, t+3) != 0)
+		    	&& ((GameBoardModel.getGrid(v, t) == GameBoardModel.getGrid(v, t+1))
+		    	&& (GameBoardModel.getGrid(v, t+1) == GameBoardModel.getGrid(v, t+2))
+		    	&& (GameBoardModel.getGrid(v, t+2) == GameBoardModel.getGrid(v, t+3)))) {
+    	          GameBoardModel.setWinner(GameBoardModel.getGrid(v, t));
+    	          GameBoardModel.setGameOver(1);
+    	          return(1);
+		    	}
+    	    }
+	    }
+    	//Check for diag1 (up to the right)
+    	for (u =0;u<4;u++) {
+	    	for (r=5;r>=3;r--) {
+		    	if ((GameBoardModel.getGrid(u, r) != 0) && (GameBoardModel.getGrid(u+1, r-1) != 0)
+		    	&& (GameBoardModel.getGrid(u+2, r-2) != 0) && (GameBoardModel.getGrid(u+3, r-3) != 0)
+		    	&& ((GameBoardModel.getGrid(u, r) == GameBoardModel.getGrid(u+1, r-1))
+		    	&& (GameBoardModel.getGrid(u+1, r-1) == GameBoardModel.getGrid(u+2, r-2))
+		    	&& (GameBoardModel.getGrid(u+2, r-2) == GameBoardModel.getGrid(u+3, r-3)))) {
+    	          GameBoardModel.setWinner(GameBoardModel.getGrid(u, r));
+    	          GameBoardModel.setGameOver(1);
+    	          return(1);
+		    	}
+    	    }
+	    }
+    	//Check for diag2 (down to the right)
+    	for (d=0;d<4;d++) {
+	    	for (r=0;r<3;r++) {
+		    	if ((GameBoardModel.getGrid(d, r) != 0) && (GameBoardModel.getGrid(d+1, r+1) != 0)
+		    	&& (GameBoardModel.getGrid(d+2, r+2) != 0) && (GameBoardModel.getGrid(d+3, r+3) != 0)
+		    	&& ((GameBoardModel.getGrid(d, r) == GameBoardModel.getGrid(d+1, r+1))
+		    	&& (GameBoardModel.getGrid(d+1, r+1) == GameBoardModel.getGrid(d+2, r+2))
+		    	&& (GameBoardModel.getGrid(d+2, r+2) == GameBoardModel.getGrid(d+3, r+3)))) {
+    	          GameBoardModel.setWinner(GameBoardModel.getGrid(d, r));
+    	          GameBoardModel.setGameOver(1);
+    	          return(1);
+		    	}
+    	    }
+	    }
+    	return(0);
 	}
 }

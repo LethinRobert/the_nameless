@@ -79,9 +79,5 @@ public class MainView extends JFrame {
 		addKeyListener(paramController);
 		//addMouseListener(paramController);
 	}
-	public void registerController2(GameBoardController paramController) {
-		addKeyListener(paramController);
-		addMouseListener(paramController);
-	}
 	
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import GameBoard.GameBoardController;
 import GameBoard.GameBoardModel;
 import GameOverScreens.VictoryModel;
 import Settings.SettingsModel;
@@ -53,7 +54,7 @@ public class MainController implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
     	//Check for Horizontal Four in a row
-		int key = e.getKeyCode();
+		int key = e.getKeyCode(), i, j, k, h, z, v, t;
 		if (GameBoard.GameBoardModel.getGSwitch() == 1 && GameBoard.GameBoardModel.getGameOver() == 0){
 
 			if (key == KeyEvent.VK_LEFT) {
@@ -71,7 +72,7 @@ public class MainController implements ActionListener, KeyListener{
 				}
 			}
 			if (key == KeyEvent.VK_ENTER) {
-				for (int k=5;k>=0;k--)
+				for (k=5;k>=0;k--)
 			    {
 			      if (GameBoardModel.getGrid(GameBoardModel.getCol(), k) == 0)
 			      {
@@ -86,26 +87,16 @@ public class MainController implements ActionListener, KeyListener{
 	    			System.out.print("\n");
 	    		}
 	    		System.out.print("\n");*/
-		    	for (int i =0;i<6;i++) {
-			    	for (int j=0;j<3;j++) {
-				    	if ((GameBoardModel.getGrid(j, i) != 0) && (GameBoardModel.getGrid(j+1, i) != 0)
-				    	&& (GameBoardModel.getGrid(j+2, i) != 0) && (GameBoardModel.getGrid(j+3, i) != 0)
-				    	&& ((GameBoardModel.getGrid(j+0, i) == GameBoardModel.getGrid(j+1, i))
-				    	&& (GameBoardModel.getGrid(j+1, i) == GameBoardModel.getGrid(j+2, i))
-				    	&& (GameBoardModel.getGrid(j+2, i) == GameBoardModel.getGrid(j+3, i)))) {
-		    	          GameBoardModel.setWinner(GameBoardModel.getGrid(j+1, i));
-		    	          GameBoardModel.setGameOver(1);
-				    	}
-		    	    }
-			    }
-			    if (GameBoardModel.getPlayer() == 1) {
-			    	GameBoardModel.setPlayer(2);
-			    	GameBoardModel.setTurn(1);
-			   	}
-			   	else {
-			    	GameBoardModel.setPlayer(1);
-			   		GameBoardModel.setTurn(0);
-			   	}
+				if (GameBoardController.checkWinner() == 0) {
+				    if (GameBoardModel.getPlayer() == 1) {
+				    	GameBoardModel.setPlayer(2);
+				    	GameBoardModel.setTurn(1);
+				   	}
+				   	else {
+				    	GameBoardModel.setPlayer(1);
+				   		GameBoardModel.setTurn(0);
+				   	}
+				}
 			}
 		}
 		if (GameBoardModel.getGameOver() == 1) {
@@ -118,8 +109,6 @@ public class MainController implements ActionListener, KeyListener{
 			GameBoardModel.reset();
 		}
 		view.display(model.getDoorNumber());
-
-
 	}
 
 	@Override
