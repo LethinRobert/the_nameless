@@ -6,6 +6,7 @@ public class GameBoardModel {
 	SettingsModel userSets = new SettingsModel();
 	int gridWidth = userSets.getGridWidth();
 	int gridHeight = userSets.getGridHeight();
+	public String gameInfoText = "<html><h1 style=\"color:red;\">Red's Turn</h1></html>";
 	public GameBoardModel() {
 		grid = new int[gridWidth][gridHeight];
 		reset();
@@ -26,5 +27,12 @@ public class GameBoardModel {
 			}
 		}
 		
+	}
+	
+	public String getGameInfoText() {
+		return gameInfoText;
+	}
+	public void setGameInfoText(String paramText) {
+		gameInfoText = paramText;
 	}
 }

@@ -22,6 +22,6 @@ public class DifficultyController implements ActionListener {
 		else if (button == "Hard")
 			model.setDoorNumber(3);
 		
-		view.display(5);
+		view.display(6);
 	}
 }

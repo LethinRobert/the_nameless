@@ -9,6 +9,7 @@ import Credits.CreditsView;
 import Difficulty.DifficultyView;
 import GameBoard.GameBoardView;
 import Instructions.InstructionsView;
+import ModeSelection.ModeSelectionView;
 import TitleMenu.TitleMenuView;
 
 public class MainView extends JFrame {
@@ -19,8 +20,9 @@ public class MainView extends JFrame {
 	InstructionsView instructionsPanel;
 	TitleMenuView tMenuPanel;
 	GameBoardView boardPanel;
+	ModeSelectionView modePanel;
 	
-	public MainView(CreditsView paramCreditsPanel, DifficultyView paramDiffPanel, InstructionsView paramInstructionsPanel, TitleMenuView paramTMenuPanel, GameBoardView paramBoardPanel) {
+	public MainView(CreditsView paramCreditsPanel, DifficultyView paramDiffPanel, InstructionsView paramInstructionsPanel, TitleMenuView paramTMenuPanel, GameBoardView paramBoardPanel, ModeSelectionView paramModePanel) {
 		super("Connect Four");
 		
 		creditsPanel = paramCreditsPanel;
@@ -28,6 +30,7 @@ public class MainView extends JFrame {
 		instructionsPanel = paramInstructionsPanel;
 		tMenuPanel = paramTMenuPanel;
 		boardPanel = paramBoardPanel;
+		modePanel = paramModePanel;
 		
 		Font font = new Font("SansSerif", Font.BOLD, 24);
 		
@@ -51,6 +54,8 @@ public class MainView extends JFrame {
 			thePanel = creditsPanel.getCreditsPanel();
 		else if (doorNumber == 6)
 			thePanel = boardPanel.getGameBoardPanel();
+		else if (doorNumber == 7)
+			thePanel = modePanel.getModePanel();
 		add(thePanel, BorderLayout.CENTER);
 
 		validate();

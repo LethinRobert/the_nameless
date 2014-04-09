@@ -4,9 +4,9 @@ public class SettingsModel {
 	private int WindowWidth, WindowHeight, Ratio, gridWidth, gridHeight;
 	
 	public SettingsModel() {
-		WindowWidth = 800;
-		WindowHeight = 600;
-		Ratio = 0;
+		WindowWidth = 1024; //possibly change to display differently for most commons resolutions in the future
+		WindowHeight = 768; //then revert to this method for other resolutions
+		Ratio = 0; //0 = 4:3 ratio, 1 = 16:9 ratio
 		gridWidth = 7;
 		gridHeight = 6;
 	}

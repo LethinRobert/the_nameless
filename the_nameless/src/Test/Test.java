@@ -8,6 +8,7 @@ import Instructions.InstructionsView;
 import Main.MainController;
 import Main.MainModel;
 import Main.MainView;
+import ModeSelection.ModeSelectionView;
 import Settings.SettingsModel;
 import TitleMenu.TitleMenuView;
 
@@ -51,9 +52,10 @@ public class Test {
 		InstructionsView instruct = new InstructionsView();
 		TitleMenuView tmenu = new TitleMenuView();
 		GameBoardView board = new GameBoardView();
+		ModeSelectionView mode = new ModeSelectionView();
 		
 		//Main
-		MainView mainView = new MainView(credits, diff, instruct, tmenu, board);
+		MainView mainView = new MainView(credits, diff, instruct, tmenu, board, mode);
 		MainModel model = new MainModel();
 		MainController controller = new MainController(mainView, model);
 		
@@ -62,7 +64,8 @@ public class Test {
 		diff.registerController(controller);
 		instruct.registerController(controller);
 		tmenu.registerController(controller);
-		//board.registerController(controller);
+		board.registerController(controller);
+		mode.registerController(controller);
 
 		//Window Setup
 		int windowWidth = userSets.getWindowWidth(), windowHeight = userSets.getWindowHeight();
