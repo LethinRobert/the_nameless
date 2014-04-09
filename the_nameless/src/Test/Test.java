@@ -65,7 +65,7 @@ public class Test {
 		//Controllers
 		Difficulty.DifficultyModel diffModel = new Difficulty.DifficultyModel();
 		Difficulty.DifficultyController diffControl = new Difficulty.DifficultyController(mainView, diffModel);
-		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController ();
+		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController();
 		
 		gameView.add1(mainView);
 		gameView.add2(model);
@@ -79,11 +79,15 @@ public class Test {
 		gameView.registerController(controller);
 		mode.registerController(controller);
 		gameView.registerController2(boardControl);
+		mainView.registerController(controller);
+		mainView.registerController2(boardControl);
 
 		//Window Setup
 		int windowWidth = userSets.getWindowWidth(), windowHeight = userSets.getWindowHeight();
 		mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainView.setSize(windowWidth, windowHeight);
 		mainView.setVisible(true);
+		mainView.setFocusable(true);
+		mainView.requestFocusInWindow();
 	}
 }

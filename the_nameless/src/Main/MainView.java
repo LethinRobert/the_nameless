@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import Credits.CreditsView;
 import Difficulty.DifficultyView;
+import GameBoard.GameBoardController;
 import GameBoard.GameBoardView;
 import Instructions.InstructionsView;
 import ModeSelection.ModeSelectionView;
@@ -54,8 +55,9 @@ public class MainView extends JFrame {
 			thePanel = tMenuPanel.getTMenuPanel();
 		else if (doorNumber == 5)
 			thePanel = creditsPanel.getCreditsPanel();
-		else if (doorNumber == 6)
+		else if (doorNumber == 6) {
 			thePanel = boardPanel.getGameBoardPanel();
+			GameBoard.GameBoardModel.setGSwitch(1);}
 		else if (doorNumber == 7)
 			thePanel = modePanel.getModePanel();
 		//else if (doorNumber == 8)
@@ -67,4 +69,13 @@ public class MainView extends JFrame {
 		validate();
 		repaint();
 	}
+	public void registerController(MainController paramController) {
+		addKeyListener(paramController);
+		//addMouseListener(paramController);
+	}
+	public void registerController2(GameBoardController paramController) {
+		addKeyListener(paramController);
+		addMouseListener(paramController);
+	}
+	
 }

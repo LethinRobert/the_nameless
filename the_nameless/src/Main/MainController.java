@@ -2,12 +2,14 @@ package Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import GameBoard.GameBoardModel;
 import Settings.SettingsModel;
 
 
-public class MainController implements ActionListener {
+public class MainController implements ActionListener, KeyListener{
 	private MainView view;
 	private MainModel model;
 	SettingsModel userSets = new SettingsModel();
@@ -39,17 +41,27 @@ public class MainController implements ActionListener {
 		else if (button == "Easy" || button == "Medium" || button == "Hard")
 			model.setDoorNumber(6);
 		else if (button == "Save") {
-			if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
-				GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
-				System.out.println("BUTTON1!!");
-			}
 		}
 		else if (button == "Save and Exit") {
-			if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 6*(userSets.getrad1() + 7) ) ) {
-				GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
-				System.out.println("BUTTON2!!");	
-			}
 		}
 		view.display(model.getDoorNumber());
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		view.display(model.getDoorNumber());
+		System.out.println("UPDATE!!");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

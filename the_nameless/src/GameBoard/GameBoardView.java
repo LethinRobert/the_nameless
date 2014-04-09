@@ -75,11 +75,12 @@ public class GameBoardView extends JFrame {
 		button4.addActionListener(paramController);
 	}
 	public void registerController2(GameBoardController paramController) {
-		//button1.addActionListener(paramController);
-		//button2.addActionListener(paramController);
-		//button3.addActionListener(paramController);
-		//button4.addActionListener(paramController);
+		button1.addActionListener(paramController);
+		button2.addActionListener(paramController);
+		button3.addActionListener(paramController);
+		button4.addActionListener(paramController);
 		gameBoardPanel.addKeyListener(paramController);
+		addMouseListener(paramController);
 	}
 	
 	public void display(int doorNumber) {

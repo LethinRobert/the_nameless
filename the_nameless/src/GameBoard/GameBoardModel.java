@@ -12,6 +12,7 @@ public class GameBoardModel {
 	static Random randomGenerator = new Random();
     static int randomInt = randomGenerator.nextInt(2);
 	public static int turn = randomInt;
+	public static int gswitch = 0;
 	public static int chipX = (userSets.getw1() + userSets.getw2());
 	public static int chipY = ( (userSets.geth1() + userSets.geth2()) - (userSets.getrad1() + 15) );
 	
@@ -40,6 +41,7 @@ public class GameBoardModel {
 			setGameInfoText("<html><h1 style=\"color:red;\">Red Goes First!!</h1></html>");
 		else
 			setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
+		gswitch = 0;
 	}
 	
 	//game info text
@@ -70,5 +72,12 @@ public class GameBoardModel {
 	}
 	public void setChipY(int paramChip) {
 		chipY = paramChip;
+	}
+	//gswitch
+	public static int getGSwitch() {
+		return gswitch;
+	}
+	public static void setGSwitch(int paramGSwitch) {
+		gswitch = paramGSwitch;
 	}
 }
