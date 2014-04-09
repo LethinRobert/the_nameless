@@ -65,7 +65,7 @@ public class Test {
 		//Controllers
 		Difficulty.DifficultyModel diffModel = new Difficulty.DifficultyModel();
 		Difficulty.DifficultyController diffControl = new Difficulty.DifficultyController(mainView, diffModel);
-		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController (mainView, model, board, gameView);
+		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController ();
 		
 		gameView.add1(mainView);
 		gameView.add2(model);

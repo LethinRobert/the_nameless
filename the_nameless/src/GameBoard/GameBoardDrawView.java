@@ -10,8 +10,6 @@ public class GameBoardDrawView extends JPanel
 	//settings
 	private SettingsModel userSets = new SettingsModel();
 	//Game Board
-	GameBoardModel board = new GameBoardModel();
-	
 	public void paintComponent( Graphics g )
 	{
 	  int i, j, startX, startY, radius, w1, w2, h1, h2, rw1, rw2, rh1, rh2, rad1;
@@ -42,15 +40,15 @@ public class GameBoardDrawView extends JPanel
       g.setColor( Color.WHITE );
       for(i=0; i<gridWidth; i++){
     	  for(j=0; j<gridHeight; j++){
-    		  if (board.getGrid(i, j) == 0)
+    		  if (GameBoardModel.getGrid(i, j) == 0)
     		  {
     			  g.setColor(Color.WHITE);
     		  }
-    		  else if (board.getGrid(i, j) == 1)
+    		  else if (GameBoardModel.getGrid(i, j) == 1)
     		  {
     			  g.setColor(Color.BLACK);
     		  }
-    		  else if (board.getGrid(i, j) == 2)
+    		  else if (GameBoardModel.getGrid(i, j) == 2)
     		  {
     			  g.setColor(Color.RED);
     		  }
@@ -58,10 +56,15 @@ public class GameBoardDrawView extends JPanel
     	  }
       }
       //level 3 Player Chip
-      if (board.getTurn() == 0)
+      if (GameBoardModel.getTurn() == 0)
+          GameBoardModel.setGameInfoText("<html><h1 style=\"color:red;\">Red Goes First!!</h1></html>");
+	  else
+	      GameBoardModel.setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
+      if (GameBoardModel.getTurn() == 0)
     	  g.setColor( Color.RED );
       else
     	  g.setColor( Color.BLACK );
-      g.fillOval(board.getChipX(), board.getChipY(), radius, radius);
+      g.fillOval(GameBoardModel.getChipX(), GameBoardModel.getChipY(), radius, radius);
+      System.out.println("GBD1 = " + GameBoardModel.getGrid(3, 3));
 	}
 }

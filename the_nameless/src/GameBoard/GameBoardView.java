@@ -22,8 +22,6 @@ public class GameBoardView extends JFrame {
 	private Main.MainModel mainModel;
 	private Main.MainView mainView;
 	
-	//Game Board Model
-	GameBoardModel board = new GameBoardModel();
 	private String gameInfoText;
 	
 	public GameBoardView() {
@@ -38,11 +36,7 @@ public class GameBoardView extends JFrame {
 		// game info init
 		gameBoardInfoPanel = new JPanel();
 		gameBoardInfoPanel.setLayout(new GridBagLayout());
-		if (board.getTurn() == 0)
-			board.setGameInfoText("<html><h1 style=\"color:red;\">Red Goes First!!</h1></html>");
-		else
-			board.setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
-		gameInfoText = board.getGameInfoText();
+		gameInfoText = GameBoardModel.getGameInfoText();
 		//game Info labels - whos turn it is, special move, other
 		gameInfo = new JLabel(gameInfoText);	
 		//game Info finalize
@@ -72,6 +66,7 @@ public class GameBoardView extends JFrame {
 		gameBoardPanel.add(gameBoardMenuPanel, BorderLayout.SOUTH);
 				
 		add(gameBoardPanel, BorderLayout.CENTER);
+	    System.out.println("GBmain = " + GameBoardModel.getGrid(3, 3));
 	}
 
 	public void registerController(MainController paramController) {
@@ -93,6 +88,7 @@ public class GameBoardView extends JFrame {
 		add(gameBoardPanel, BorderLayout.CENTER);
 		validate();
 		repaint();
+		System.out.println("GBdis = " + GameBoardModel.getGrid(3, 3));
 	}
 
 	public JPanel getGameBoardPanel() {

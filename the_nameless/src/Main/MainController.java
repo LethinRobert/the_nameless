@@ -10,8 +10,6 @@ import Settings.SettingsModel;
 public class MainController implements ActionListener {
 	private MainView view;
 	private MainModel model;
-	//Game Board Model
-	GameBoardModel board = new GameBoardModel();
 	SettingsModel userSets = new SettingsModel();
 	
 	
@@ -41,7 +39,20 @@ public class MainController implements ActionListener {
 		else if (button == "Easy" || button == "Medium" || button == "Hard")
 			model.setDoorNumber(6);
 		else if (button == "Save") {
-			board.setChipX(board.getChipX() - (userSets.getrad1() + 7));
+			if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
+				GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
+				System.out.println("BUTTON1!!");
+			}
+			GameBoardModel.setGrid(3, 3, 1);
+			System.out.println("MC = " + GameBoardModel.getGrid(3, 3));
+		}
+		else if (button == "Save and Exit") {
+			if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 6*(userSets.getrad1() + 7) ) ) {
+				GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
+				System.out.println("BUTTON2!!");	
+			}
+			GameBoardModel.setGrid(3, 3, 1);
+			System.out.println("MC = " + GameBoardModel.getGrid(3, 3));
 		}
 		view.display(model.getDoorNumber());
 	}
