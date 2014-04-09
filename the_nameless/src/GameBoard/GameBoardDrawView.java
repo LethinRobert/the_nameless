@@ -8,7 +8,7 @@ import Settings.SettingsModel;
 public class GameBoardDrawView extends JPanel 
 {
 	//settings
-	SettingsModel userSets = new SettingsModel();
+	private SettingsModel userSets = new SettingsModel();
 	//Game Board
 	GameBoardModel board = new GameBoardModel();
 	
@@ -17,39 +17,15 @@ public class GameBoardDrawView extends JPanel
 	  int i, j, startX, startY, radius, w1, w2, h1, h2, rw1, rw2, rh1, rh2, rad1;
 	  int gridWidth = userSets.getGridWidth();
 	  int gridHeight = userSets.getGridHeight();
-	  if (userSets.getRatio() == 0) { //4:3 Aspect
-		  w1 = (userSets.getWindowWidth() / 6);
-		  w2 = (userSets.getWindowWidth() / 40);
-		  h1 = (userSets.getWindowHeight() / 22);
-		  h2 = (userSets.getWindowHeight() / 60);
-		  rad1 = (userSets.getWindowHeight() / 10);
-		  rw1 = (userSets.getWindowWidth() / 2);
-		  rw2 = (userSets.getWindowWidth() / 8);
-		  rh1 = (userSets.getWindowHeight() / 2);
-		  rh2 = (userSets.getWindowHeight() / 5);
-	  }
-	  else if (userSets.getRatio() == 1) { //16:9 Aspect NOT OPTIMIZED
-		  w1 = (userSets.getWindowWidth() / 4);
-		  w2 = (userSets.getWindowWidth() / 30);
-		  h1 = (userSets.getWindowHeight() / 9);
-		  h2 = (userSets.getWindowHeight() / 40);
-		  rad1 = (userSets.getWindowHeight() / 9);
-		  rw1 = (userSets.getWindowWidth() / 2);
-		  rw2 = (userSets.getWindowWidth() / 14);
-		  rh1 = (userSets.getWindowHeight() / 2);
-		  rh2 = (userSets.getWindowHeight() / 4);
-	  }
-	  else {
-		  w1 = (userSets.getWindowWidth() / 6);
-		  w2 = (userSets.getWindowWidth() / 40);
-		  h1 = (userSets.getWindowHeight() / 8);
-		  h2 = (userSets.getWindowHeight() / 60);
-		  rad1 = (userSets.getWindowHeight() / 10);
-		  rw1 = (userSets.getWindowWidth() / 2);
-		  rw2 = (userSets.getWindowWidth() / 8);
-		  rh1 = (userSets.getWindowHeight() / 2);
-		  rh2 = (userSets.getWindowHeight() / 5);
-	  }
+	  w1 = userSets.getw1();
+	  w2 = userSets.getw2();
+	  h1 = userSets.geth1();
+	  h2 = userSets.geth2();
+	  rad1 = userSets.getrad1();
+	  rw1 = userSets.getrw1();
+	  rw2 = userSets.getrw2();
+	  rh1 = userSets.getrh1();
+	  rh2 = userSets.getrh2();
 	  radius = rad1;
 	  startX = w1 + w2;
 	  startY = h1 + h2;
@@ -81,6 +57,11 @@ public class GameBoardDrawView extends JPanel
     		  g.fillOval(startX + ((radius + 7) * i), startY + ((radius + 7) * j), radius, radius);
     	  }
       }
-      
+      //level 3 Player Chip
+      if (board.getTurn() == 0)
+    	  g.setColor( Color.RED );
+      else
+    	  g.setColor( Color.BLACK );
+      g.fillOval(board.getChipX(), board.getChipY(), radius, radius);
 	}
 }

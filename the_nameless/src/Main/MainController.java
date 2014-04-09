@@ -3,10 +3,16 @@ package Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import GameBoard.GameBoardModel;
+import Settings.SettingsModel;
+
 
 public class MainController implements ActionListener {
 	private MainView view;
 	private MainModel model;
+	//Game Board Model
+	GameBoardModel board = new GameBoardModel();
+	SettingsModel userSets = new SettingsModel();
 	
 	
 	public MainController(MainView paramView, MainModel paramModel) {
@@ -30,11 +36,13 @@ public class MainController implements ActionListener {
 			model.setDoorNumber(6);
 		else if (button == "Computer")
 			model.setDoorNumber(1);
-		else if (button == "Load")
-			model.setDoorNumber(8);
+		//else if (button == "Load")
+			//model.setDoorNumber(8);
 		else if (button == "Easy" || button == "Medium" || button == "Hard")
 			model.setDoorNumber(6);
-		
+		else if (button == "Save") {
+			board.setChipX(board.getChipX() - (userSets.getrad1() + 7));
+		}
 		view.display(model.getDoorNumber());
 	}
 }

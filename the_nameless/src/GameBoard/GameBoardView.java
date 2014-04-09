@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,15 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Main.MainController;
+//import GameBoardController;
 
 public class GameBoardView extends JFrame {
 	private JPanel gameBoardPanel, gameBoardPanelCenter = new GameBoardDrawView(), gameBoardMenuPanel, gameBoardInfoPanel;
 	private JButton button1, button2, button3, button4;
 	private JLabel gameInfo;
 	
+	private Main.MainModel mainModel;
+	private Main.MainView mainView;
+	
 	//Game Board Model
 	GameBoardModel board = new GameBoardModel();
-	private String gameInfoText = board.getGameInfoText();
+	private String gameInfoText;
 	
 	public GameBoardView() {
 		super("Connect Four");
@@ -32,7 +37,12 @@ public class GameBoardView extends JFrame {
 		
 		// game info init
 		gameBoardInfoPanel = new JPanel();
-		gameBoardInfoPanel.setLayout(new GridBagLayout());	
+		gameBoardInfoPanel.setLayout(new GridBagLayout());
+		if (board.getTurn() == 0)
+			board.setGameInfoText("<html><h1 style=\"color:red;\">Red Goes First!!</h1></html>");
+		else
+			board.setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
+		gameInfoText = board.getGameInfoText();
 		//game Info labels - whos turn it is, special move, other
 		gameInfo = new JLabel(gameInfoText);	
 		//game Info finalize
@@ -70,6 +80,13 @@ public class GameBoardView extends JFrame {
 		button3.addActionListener(paramController);
 		button4.addActionListener(paramController);
 	}
+	public void registerController2(GameBoardController paramController) {
+		button1.addActionListener(paramController);
+		button2.addActionListener(paramController);
+		button3.addActionListener(paramController);
+		button4.addActionListener(paramController);
+		gameBoardPanel.addKeyListener(paramController);
+	}
 	
 	public void display(int doorNumber) {
 		remove(gameBoardPanel);
@@ -80,5 +97,12 @@ public class GameBoardView extends JFrame {
 
 	public JPanel getGameBoardPanel() {
 		return gameBoardPanel;
+	}
+	public void add1(Main.MainView paramMainView) {
+		mainView = paramMainView;
+	}
+
+	public void add2(Main.MainModel paramMainModel) {
+		mainModel = paramMainModel;
 	}
 }

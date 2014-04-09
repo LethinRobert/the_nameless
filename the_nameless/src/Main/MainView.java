@@ -56,6 +56,8 @@ public class MainView extends JFrame {
 			thePanel = boardPanel.getGameBoardPanel();
 		else if (doorNumber == 7)
 			thePanel = modePanel.getModePanel();
+		//else if (doorNumber == 8)
+			//thePanel = loadPanel.getloadPanel();
 		add(thePanel, BorderLayout.CENTER);
 
 		validate();

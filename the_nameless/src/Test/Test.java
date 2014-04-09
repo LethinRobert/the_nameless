@@ -1,8 +1,10 @@
 package Test;
+
 import javax.swing.JFrame;
 
 import Credits.CreditsView;
 import Difficulty.DifficultyView;
+import GameBoard.GameBoardModel;
 import GameBoard.GameBoardView;
 import Instructions.InstructionsView;
 import Main.MainController;
@@ -43,29 +45,40 @@ public class Test {
 		
 		System.out.println("Repository for the_nameless");		
 		
-		//settings
+		//Model
 		SettingsModel userSets = new SettingsModel();
+		GameBoardModel board = new GameBoardModel();
 		
 		//views
 		CreditsView credits = new CreditsView();
 		DifficultyView diff = new DifficultyView();
 		InstructionsView instruct = new InstructionsView();
 		TitleMenuView tmenu = new TitleMenuView();
-		GameBoardView board = new GameBoardView();
+		GameBoardView gameView = new GameBoardView();
 		ModeSelectionView mode = new ModeSelectionView();
 		
 		//Main
-		MainView mainView = new MainView(credits, diff, instruct, tmenu, board, mode);
+		MainView mainView = new MainView(credits, diff, instruct, tmenu, gameView, mode);
 		MainModel model = new MainModel();
 		MainController controller = new MainController(mainView, model);
 		
 		//Controllers
+		Difficulty.DifficultyModel diffModel = new Difficulty.DifficultyModel();
+		Difficulty.DifficultyController diffControl = new Difficulty.DifficultyController(mainView, diffModel);
+		GameBoard.GameBoardController boardControl = new GameBoard.GameBoardController (mainView, model, board, gameView);
+		
+		gameView.add1(mainView);
+		gameView.add2(model);
+		
+		//register Controllers
 		credits.registerController(controller);
 		diff.registerController(controller);
+		diff.registerController2(diffControl);
 		instruct.registerController(controller);
 		tmenu.registerController(controller);
-		board.registerController(controller);
+		gameView.registerController(controller);
 		mode.registerController(controller);
+		gameView.registerController2(boardControl);
 
 		//Window Setup
 		int windowWidth = userSets.getWindowWidth(), windowHeight = userSets.getWindowHeight();
