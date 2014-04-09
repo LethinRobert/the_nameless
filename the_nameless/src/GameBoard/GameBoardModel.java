@@ -13,7 +13,7 @@ public class GameBoardModel {
     static int randomInt = randomGenerator.nextInt(2);
 	public static int turn = randomInt;
 	public static int player = turn + 1;
-	public static int gswitch = 0, col = 0;
+	public static int gswitch = 0, col = 0, gameOver = 0, winner = 1;
 	public static int chipX = (userSets.getw1() + userSets.getw2());
 	public static int chipY = ( (userSets.geth1() + userSets.geth2()) - (userSets.getrad1() + 15) );
 	
@@ -44,6 +44,8 @@ public class GameBoardModel {
 		else
 			setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
 		gswitch = 0;
+		gameOver = 0;
+		winner = 1;
 		col = 0;
 	}
 	
@@ -90,11 +92,25 @@ public class GameBoardModel {
 	public static void setPlayer(int paramPlayer) {
 		player = paramPlayer;
 	}
-	//Collum
+	//Col
 	public static int getCol() {
 		return col;
 	}
 	public static void setCol(int paramCol) {
 		col = paramCol;
+	}
+	//Winner
+	public static int getWinner() {
+		return winner;
+	}
+	public static void setWinner(int paramWinner) {
+		winner = paramWinner;
+	}
+	//GameOver
+	public static int getGameOver() {
+		return gameOver;
+	}
+	public static void setGameOver(int paramGameOver) {
+		gameOver = paramGameOver;
 	}
 }

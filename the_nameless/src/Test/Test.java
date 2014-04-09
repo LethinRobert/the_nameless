@@ -6,6 +6,7 @@ import Credits.CreditsView;
 import Difficulty.DifficultyView;
 import GameBoard.GameBoardModel;
 import GameBoard.GameBoardView;
+import GameOverScreens.VictoryView;
 import Instructions.InstructionsView;
 import Main.MainController;
 import Main.MainModel;
@@ -32,13 +33,16 @@ public class Test {
 		* 5. SettingsModel with rescalable skeleton built
 		* 6. Setting for board size skeleton
 		* 7. GameBoard M/V skeletons
+		* 8. Working checker movement
+		* 9. Working checker drop
+		* 10. Some winner check logic
 		*/
 		/* to do list
-		* 1. Instructions View, EXIT, Difficulty View
-		* 2. Controllers ALL
-		* 3. Multiplayer
+		* 1. Instructions View
+		* 2. Multiplayer - finish
+		* 3. finish game logic
 		* 4. AI
-		* 5. Victory/defeat screens
+		* 5. Victory/defeat screens improve
 		* 6. Improve graphics scaling
 		* 7. NICE TO HAVE STUFF
 		*/
@@ -56,9 +60,10 @@ public class Test {
 		TitleMenuView tmenu = new TitleMenuView();
 		GameBoardView gameView = new GameBoardView();
 		ModeSelectionView mode = new ModeSelectionView();
+		VictoryView victory = new VictoryView();
 		
 		//Main
-		MainView mainView = new MainView(credits, diff, instruct, tmenu, gameView, mode);
+		MainView mainView = new MainView(credits, diff, instruct, tmenu, gameView, mode, victory);
 		MainModel model = new MainModel();
 		MainController controller = new MainController(mainView, model);
 		
@@ -81,6 +86,7 @@ public class Test {
 		gameView.registerController2(boardControl);
 		mainView.registerController(controller);
 		mainView.registerController2(boardControl);
+		victory.registerController(controller);
 
 		//Window Setup
 		int windowWidth = userSets.getWindowWidth(), windowHeight = userSets.getWindowHeight();

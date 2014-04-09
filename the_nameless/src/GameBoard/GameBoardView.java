@@ -88,7 +88,6 @@ public class GameBoardView extends JFrame {
 		add(gameBoardPanel, BorderLayout.CENTER);
 		validate();
 		repaint();
-		System.out.println("GBdis = " + GameBoardModel.getGrid(3, 3));
 	}
 
 	public JPanel getGameBoardPanel() {

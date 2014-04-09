@@ -88,7 +88,8 @@ public class GameBoardController implements ActionListener, KeyListener, MouseLi
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (GameBoard.GameBoardModel.getGSwitch() == 1){
+		/*if (GameBoard.GameBoardModel.getGSwitch() == 1 && GameBoard.GameBoardModel.getGameOver() == 0){
+
 			if (key == KeyEvent.VK_LEFT) {
 				if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
 					GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
@@ -104,33 +105,30 @@ public class GameBoardController implements ActionListener, KeyListener, MouseLi
 				}
 			}
 			if (key == KeyEvent.VK_ENTER) {
-				for (int i=5;i>=0;i--)
+				for (int k=5;k>=0;k--)
 			    {
-			      if (GameBoardModel.getGrid(GameBoardModel.getCol(), i) == 0)
+			      if (GameBoardModel.getGrid(GameBoardModel.getCol(), k) == 0)
 			      {
-			    	GameBoardModel.setGrid(GameBoardModel.getCol(), i, GameBoardModel.getPlayer());
-			    	if (GameBoardModel.getPlayer() == 1) {
-			    		GameBoardModel.setPlayer(2);
-			    		GameBoardModel.setTurn(1);
-			    	}
-			    	else {
-			    		GameBoardModel.setPlayer(1);
-			    		GameBoardModel.setTurn(0);
-			    	}
+			    	  GameBoardModel.setGrid(GameBoardModel.getCol(), k, GameBoardModel.getPlayer());
 			        break;
 			      }
-			       
 			    }
+
+			    if (GameBoardModel.getPlayer() == 1) {
+			    	GameBoardModel.setPlayer(2);
+			    	GameBoardModel.setTurn(1);
+			   	}
+			   	else {
+			    	GameBoardModel.setPlayer(1);
+			   		GameBoardModel.setTurn(0);
+			   	}
 			}
-		}
-		System.out.println("KP");
+		}*/
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("KR");
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("KT");	
 	}
 }
