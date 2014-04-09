@@ -23,7 +23,6 @@ public class GameBoardController implements ActionListener, KeyListener {
 		else
 			GameBoardModel.setGameInfoText("<html><h1 style=\"color:black;\">Black Goes First!!</h1></html>");
 		*/
-	    System.out.println("GBCinit = " + GameBoardModel.getGrid(3, 3));
 	}
 	//KEYBOARD INPUT
 	public void keyPressed(KeyEvent e){

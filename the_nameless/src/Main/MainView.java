@@ -2,6 +2,8 @@ package Main;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -58,6 +60,8 @@ public class MainView extends JFrame {
 			thePanel = modePanel.getModePanel();
 		//else if (doorNumber == 8)
 			//thePanel = loadPanel.getloadPanel();
+		else if (doorNumber == 9)
+			System.exit(1);
 		add(thePanel, BorderLayout.CENTER);
 
 		validate();

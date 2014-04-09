@@ -29,7 +29,7 @@ public class MainController implements ActionListener {
 		else if (button == "Main Menu")
 			model.setDoorNumber(4);
 		else if (button == "Exit")
-			model.setDoorNumber(5);
+			model.setDoorNumber(9);
 		else if (button == "Multiplayer")
 			model.setDoorNumber(6);
 		else if (button == "Computer")
@@ -43,16 +43,12 @@ public class MainController implements ActionListener {
 				GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
 				System.out.println("BUTTON1!!");
 			}
-			GameBoardModel.setGrid(3, 3, 1);
-			System.out.println("MC = " + GameBoardModel.getGrid(3, 3));
 		}
 		else if (button == "Save and Exit") {
 			if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 6*(userSets.getrad1() + 7) ) ) {
 				GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
 				System.out.println("BUTTON2!!");	
 			}
-			GameBoardModel.setGrid(3, 3, 1);
-			System.out.println("MC = " + GameBoardModel.getGrid(3, 3));
 		}
 		view.display(model.getDoorNumber());
 	}

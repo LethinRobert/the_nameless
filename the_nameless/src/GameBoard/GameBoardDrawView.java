@@ -65,6 +65,5 @@ public class GameBoardDrawView extends JPanel
       else
     	  g.setColor( Color.BLACK );
       g.fillOval(GameBoardModel.getChipX(), GameBoardModel.getChipY(), radius, radius);
-      System.out.println("GBD1 = " + GameBoardModel.getGrid(3, 3));
 	}
 }
