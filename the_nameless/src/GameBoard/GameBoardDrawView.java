@@ -46,11 +46,11 @@ public class GameBoardDrawView extends JPanel
     		  }
     		  else if (GameBoardModel.getGrid(i, j) == 1)
     		  {
-    			  g.setColor(Color.BLACK);
+    			  g.setColor(Color.RED);
     		  }
     		  else if (GameBoardModel.getGrid(i, j) == 2)
     		  {
-    			  g.setColor(Color.RED);
+    			  g.setColor(Color.BLACK);
     		  }
     		  g.fillOval(startX + ((radius + 7) * i), startY + ((radius + 7) * j), radius, radius);
     	  }

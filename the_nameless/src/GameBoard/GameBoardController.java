@@ -92,14 +92,35 @@ public class GameBoardController implements ActionListener, KeyListener, MouseLi
 			if (key == KeyEvent.VK_LEFT) {
 				if(GameBoardModel.getChipX() > (userSets.getw1() + userSets.getw2())) {
 					GameBoardModel.setChipX(GameBoardModel.getChipX() - (userSets.getrad1() + 7));
-					System.out.println("CLICK!!!");
+					GameBoardModel.setCol(GameBoardModel.getCol() - 1);
+					System.out.println(GameBoardModel.getCol());
 				}
 			}
 			if (key == KeyEvent.VK_RIGHT) {
 				if(GameBoardModel.getChipX() < ( (userSets.getw1() + userSets.getw2()) + 6*(userSets.getrad1() + 7) ) ) {
 					GameBoardModel.setChipX(GameBoardModel.getChipX() + (userSets.getrad1() + 7));
-					System.out.println("CLICK!!!");	
+					GameBoardModel.setCol(GameBoardModel.getCol() + 1);
+					System.out.println(GameBoardModel.getCol());	
 				}
+			}
+			if (key == KeyEvent.VK_ENTER) {
+				for (int i=5;i>=0;i--)
+			    {
+			      if (GameBoardModel.getGrid(GameBoardModel.getCol(), i) == 0)
+			      {
+			    	GameBoardModel.setGrid(GameBoardModel.getCol(), i, GameBoardModel.getPlayer());
+			    	if (GameBoardModel.getPlayer() == 1) {
+			    		GameBoardModel.setPlayer(2);
+			    		GameBoardModel.setTurn(1);
+			    	}
+			    	else {
+			    		GameBoardModel.setPlayer(1);
+			    		GameBoardModel.setTurn(0);
+			    	}
+			        break;
+			      }
+			       
+			    }
 			}
 		}
 		System.out.println("KP");
